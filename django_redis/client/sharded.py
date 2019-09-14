@@ -5,9 +5,9 @@ from __future__ import absolute_import, unicode_literals
 import re
 from collections import OrderedDict
 
+import six
 from django.conf import settings
 from django.utils.encoding import smart_text
-from django.utils.six import text_type
 from redis.exceptions import ConnectionError
 
 from ..exceptions import ConnectionInterrupted
@@ -38,7 +38,7 @@ class ShardClient(DefaultClient):
         return connection_dict
 
     def get_server_name(self, _key):
-        key = text_type(_key)
+        key = six.text_type(_key)
         g = self._findhash.match(key)
         if g is not None and len(g.groups()) > 0:
             key = g.groups()[0]

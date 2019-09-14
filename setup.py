@@ -23,6 +23,7 @@ setup(
     install_requires=[
         "Django>=1.11",
         "redis>=2.10.0",
+        "six",
     ],
     zip_safe=False,
     include_package_data=True,
